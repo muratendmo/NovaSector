@@ -355,10 +355,8 @@ GLOBAL_LIST_INIT(all_loadout_categories, init_loadout_categories())
 		displayed_text[FA_ICON_BRIEFCASE] = "Job Whitelist: [jointext(restricted_roles, ", ")]"
 	if(blacklisted_roles)
 		displayed_text[FA_ICON_LOCK] = "Job Blacklist: [jointext(blacklisted_roles, ", ")]"
-	if(species_whitelist)
-		displayed_text[FA_ICON_SPAGHETTI_MONSTER_FLYING] = "Species Whitelist: [capitalize(jointext(species_whitelist, ", "))]"
-	if(species_blacklist)
-		displayed_text[FA_ICON_SHRIMP] = "Species Blacklist: [capitalize(jointext(species_blacklist, ", "))]"
+	if(restricted_species)
+		displayed_text[FA_ICON_SPAGHETTI_MONSTER_FLYING] = "Species Whitelist: [capitalize(jointext(restricted_species, ", "))]"
 	if(nova_stars_only)
 		displayed_text[FA_ICON_HOURGLASS_HALF] = "Nova Star-Only"
 	if(donator_only || ckeywhitelist)

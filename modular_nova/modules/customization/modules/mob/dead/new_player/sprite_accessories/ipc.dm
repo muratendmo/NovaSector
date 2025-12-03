@@ -151,19 +151,17 @@
 	organ_type = /obj/item/organ/synth_antenna
 
 /datum/sprite_accessory/antenna/is_hidden(mob/living/carbon/human/wearer)
-	var/obj/item/clothing/head/mod/worn_head = wearer.head
-	if(isnull(worn_head))
+	if(!wearer.head)
 		return FALSE
 	if(key in wearer.try_hide_mutant_parts)
 		return TRUE
 //	Exception for MODs
-	if(istype(worn_head))
+	if(istype(wearer.head, /obj/item/clothing/head/mod))
 		return FALSE
 //	Hide accessory if flagged to do so
-	var/obj/item/clothing/mask/worn_mask = wearer.wear_mask
-	if((worn_head?.flags_inv & HIDEHAIR || worn_mask?.flags_inv & HIDEHAIR) \
+	if((wearer.head?.flags_inv & HIDEHAIR || wearer.wear_mask?.flags_inv & HIDEHAIR) \
 		// This line basically checks if we FORCE accessory-ears to show, for items with earholes like Balaclavas and Luchador masks
-		&& ((worn_head && !(worn_head.flags_inv & SHOWSPRITEEARS)) || (worn_mask && !(worn_mask.flags_inv & SHOWSPRITEEARS))))
+		&& ((wearer.head && !(wearer.head.flags_inv & SHOWSPRITEEARS)) || (wearer.wear_mask && !(wearer.wear_mask?.flags_inv & SHOWSPRITEEARS))))
 		return TRUE
 
 /datum/sprite_accessory/antenna/none

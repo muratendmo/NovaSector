@@ -7,22 +7,22 @@
 	var/fluffy = FALSE
 
 /datum/sprite_accessory/tails/is_hidden(mob/living/carbon/human/wearer)
-	if(wearer.owned_turf?.name == "tail")
+	var/list/used_in_turf = list("tail")
+	if(wearer.owned_turf?.name in used_in_turf)
 	// Emote exception
 		return TRUE
 
-	var/obj/item/clothing/suit/mod/worn_suit = wearer.wear_suit
-	if(isnull(wearer.w_uniform) && isnull(worn_suit))
+	if(!wearer.w_uniform && !wearer.wear_suit)
 		return FALSE
 	if(key in wearer.try_hide_mutant_parts)
 		return TRUE
 
-	if(worn_suit)
+	if(wearer.wear_suit)
 		// Exception for MODs
-		if(istype(worn_suit))
+		if(istype(wearer.wear_suit, /obj/item/clothing/suit/mod))
 			return FALSE
 		// Hide accessory if flagged to do so
-		else if(worn_suit.flags_inv & HIDETAIL)
+		else if(wearer.wear_suit.flags_inv & HIDETAIL)
 			return TRUE
 
 /datum/sprite_accessory/tails/none

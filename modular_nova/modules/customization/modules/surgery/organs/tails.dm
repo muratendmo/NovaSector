@@ -28,8 +28,7 @@
 	if(wearer.owned_turf?.name in used_in_turf)
 		return FALSE
 
-	var/obj/item/clothing/suit/mod/worn_suit = wearer.wear_suit
-	if(isnull(wearer.w_uniform) && isnull(worn_suit))
+	if(!wearer.w_uniform && !wearer.wear_suit)
 		return ..()
 
 	// Can hide if wearing uniform
@@ -37,7 +36,7 @@
 		return FALSE
 
 	// Exception for MODs
-	if(istype(worn_suit))
+	if(istype(wearer.wear_suit, /obj/item/clothing/suit/mod))
 		return TRUE
 
 	return !(bodypart_owner.owner?.obscured_slots & HIDETAIL)

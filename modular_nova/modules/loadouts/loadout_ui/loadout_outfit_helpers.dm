@@ -58,7 +58,7 @@
 					erpbox = new(loc)
 				new item.item_path(erpbox)
 			else
-				if (!item.can_be_applied_to(src, preference_source, equipping_job, allow_mechanical_loadout_items, visuals_only))
+				if (!item.can_be_applied_to(src, preference_source, equipping_job, allow_mechanical_loadout_items))
 					continue
 				new item.item_path(briefcase)
 
@@ -72,7 +72,7 @@
 					erpbox = new(loc)
 				new item.item_path(erpbox)
 			else
-				if (!item.can_be_applied_to(src, preference_source, equipping_job, allow_mechanical_loadout_items, visuals_only))
+				if (!item.can_be_applied_to(src, preference_source, equipping_job, allow_mechanical_loadout_items))
 					continue
 
 				// Make sure the item is not overriding an important for life outfit item
@@ -136,7 +136,7 @@
 	var/list/loadout_entries = preference_source.read_preference(/datum/preference/loadout)
 	var/list/loadout_datums = loadout_list_to_datums(loadout_entries[preference_source.read_preference(/datum/preference/loadout_index)])
 	for (var/datum/loadout_item/head/item in loadout_datums)
-		if (!item.can_be_applied_to(src, preference_source, equipping_job, visuals_only))
+		if (!item.can_be_applied_to(src, preference_source, equipping_job))
 			continue
 		place_on_head(new item.item_path)
 		break
