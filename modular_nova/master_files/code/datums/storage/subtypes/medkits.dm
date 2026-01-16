@@ -1,0 +1,1 @@
+/datum/storage/medkit/coroner

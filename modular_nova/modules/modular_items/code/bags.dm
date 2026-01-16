@@ -192,19 +192,4 @@
 	)
 	generate_items_inside(items_inside, src)
 
-/datum/storage/pouch/ammo/Initialize(mapload)
-	. = ..()
-	set_holdable(list(can_hold,
-		/obj/item/reagent_containers,
-		/obj/item/bodybag,
-		/obj/item/toy/crayon,
-		/obj/item/pen,
-		/obj/item/paper,
-		/obj/item/surgical_drapes,
-		/obj/item/scalpel,
-		/obj/item/retractor,
-		/obj/item/hemostat,
-		/obj/item/cautery,
-		/obj/item/autopsy_scanner,
-		/obj/item/clipboard,
-	))
+
